@@ -1,0 +1,31 @@
+
+	mov ax 0  ; a = 0
+	mov bx 1  ; b = 1
+	mov cx 10 ; i = 10
+
+loop:
+	; while(i)
+	load cx
+	jz end
+	
+	; t = a + b
+	load ax
+	load bx
+	add
+	; a = b
+	mov ax bx
+	; b = t
+	store bx
+	
+	load bx
+	print
+
+	; i--
+	load cx
+	push 1
+	sub
+	store cx
+	
+	jmp loop
+
+end:
