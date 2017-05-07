@@ -1,36 +1,47 @@
 SimpleAsm
 =========
 
-A simple C++ ASM assembler and interpreter for learning purpose.
+A minimalist C++ ASM assembler and interpreter for learning purpose.
 
-Examples of SimpleAsm sources codes: [factorial](Examples/Factorial.txt), [fibonacci](Examples/Fib.txt)
+Five registers: ax, bx, cx, dx, ex.
+A stack of size 1024.
+10 instructions: mov, push, load, store, add, sub, mul, jmp, jz, print.
+Instructions are 32 bits, and splitted in 4 bytes for the instruction number
+and the registres id: (Instr, Reg1, Reg2, Reg3).
 
+Example of Fibonacci in Simple Asm
 ```
-	mov ax 8 ; counter
-	mov bx 1 ; result storing
-	
+	mov ax 0  ; a = 0
+	mov bx 1  ; b = 1
+	mov cx 10 ; i = 10
+
 loop:
-	load ax  ; push the counter on top of the stack
-	jz end   ; if top stack is zero the calcul is completed
+	; while(i)
+	load cx
+	jz end
+	
+	; t = a + b
+	load ax
+	load bx
+	add
+	; a = b
+	mov ax bx
+	; b = t
+	store bx
 	
 	load bx
 	print
-	
-	; result *= counter
-	; bx *= ax
-	load ax
-	load bx
-	mul
-	store bx
-	
-	; counter--
-	; bx--
-	load ax
+
+	; i--
+	load cx
 	push 1
 	sub
-	store ax
+	store cx
 	
 	jmp loop
 
 end:
+
 ```
+
+Examples of [factorial](Examples/Factorial.txt) in Simple Asm.
