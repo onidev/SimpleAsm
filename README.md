@@ -4,8 +4,11 @@ SimpleAsm
 A minimalist C++ ASM assembler and interpreter for learning purpose.
 
 Five registers: ax, bx, cx, dx, ex.
+
 A stack of size 1024.
+
 10 instructions: mov, push, load, store, add, sub, mul, jmp, jz, print.
+
 Instructions are 32 bits, and splitted in 4 bytes for the instruction number
 and the registres id: (Instr, Reg1, Reg2, Reg3).
 
